@@ -5,6 +5,7 @@ import {
   ChevronRight, Gauge, Globe2, Layers3, Menu, Route, Sparkles,
   Target, TrendingUp, Users, X, Zap
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 const sections = [
   ["opportunity", "Opportunity"], ["growth", "Growth engine"],
@@ -95,5 +96,6 @@ export default function App() {
       <section id="fit" className="shell section"><div className="fit-grid"><div><SectionTitle eyebrow="Why me" title="A seller, strategist and builder." copy="My background sits at the intersection of enterprise relationships, emerging ad products, campaign strategy and cross-market growth."/><div className="fit-note"><BriefcaseBusiness/><p>I bring an agency-first perspective, strong adtech fluency and experience shaping client-ready narratives across gaming, programmatic and digital advertising.</p></div></div><div className="strengths">{strengths.map(([t,x],i)=><article key={t}><span>{i+1}</span><h3>{t}</h3><p>{x}</p></article>)}</div></div><div className="commit"><div><small>My commitment</small><h2>Build trusted partnerships that grow advertiser outcomes and Uber's ads business together.</h2></div><span><ArrowRight/></span></div></section>
     </main>
     <footer className="footer shell"><span>Pratik Mishra · Strategic perspective for Uber Advertising</span><a href="https://jobs.uber.com/en/jobs/303137/" target="_blank" rel="noreferrer">View role description <ArrowRight size={13}/></a></footer>
+    <Analytics />
   </div>;
 }
