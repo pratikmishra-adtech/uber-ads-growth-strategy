@@ -80,7 +80,7 @@ export default function App() {
           <p>I scale strategic accounts, build agency and platform partnerships, and turn advertising capabilities into measurable client outcomes across APAC.</p>
           <div className="actions">
             <Button onClick={() => scrollTo("track-record")}>Explore my track record <ArrowRight size={16}/></Button>
-            <a className="button secondary" href="https://jio-director-strategy.vercel.app/Pratik-Mishra-CV.pdf" target="_blank" rel="noreferrer">Download CV <ArrowRight size={15}/></a>
+            <a className="button secondary" href="/Pratik-Mishra-CV.pdf" download="Pratik-Mishra-CV.pdf">Download CV <ArrowRight size={15}/></a>
             <a className="text-link" href="https://www.linkedin.com/in/pratikmishra/" target="_blank" rel="noreferrer">View LinkedIn <ArrowRight size={14}/></a>
           </div>
         </motion.div>
