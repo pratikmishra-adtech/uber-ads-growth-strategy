@@ -8,8 +8,8 @@ import {
 
 const sections = [
   ["track-record", "Track record"], ["growth", "Growth engine"],
-  ["market", "India expansion"], ["concept", "Pitch concept"],
-  ["roadmap", "90-day plan"], ["fit", "Why me"]
+  ["concept", "Pitch concept"], ["roadmap", "90-day plan"],
+  ["fit", "Why me"]
 ];
 
 const proofPoints = [
@@ -37,12 +37,6 @@ const growthPillars = [
   { icon: Layers3, title: "Expand product adoption", text: "Move clients from one-off campaigns to a planned portfolio of awareness, consideration and action-led solutions across Uber's mobility journey.", impact: "Higher account depth" },
   { icon: Users, title: "Activate agency influence", text: "Build repeatable narratives, planning tools and joint business reviews that make Uber Advertising easier for agencies to recommend.", impact: "More briefs and renewals" },
   { icon: BarChart3, title: "Prove commercial value", text: "Connect every proposal to a client objective, define a clear measurement story and turn campaign performance into the next growth conversation.", impact: "Stronger retention" }
-];
-
-const marketPhases = [
-  { n: "01", title: "Deepen core markets", cities: "Delhi NCR · Mumbai · Bengaluru", allocation: 45, colour: "#20d5a6", outcome: "Account expansion", goals: ["Increase share of wallet", "Drive multi-product adoption", "Map senior decision-makers"] },
-  { n: "02", title: "Scale growth hubs", cities: "Hyderabad · Chennai · Kolkata", allocation: 35, colour: "#a8ff78", outcome: "New advertiser revenue", goals: ["Activate agency influence", "Build category narratives", "Create repeatable sales motions"] },
-  { n: "03", title: "Unlock next-wave markets", cities: "Pune · Ahmedabad · Jaipur · Kochi", allocation: 20, colour: "#7faaff", outcome: "Market penetration", goals: ["Create regional packages", "Win challenger brands", "Run test-and-scale programmes"] }
 ];
 
 const portfolioPlays = [
@@ -103,12 +97,6 @@ export default function App() {
 
       <section id="growth" className="shell section"><SectionTitle eyebrow="Growth engine" title="Four connected levers for durable ad revenue." copy="Select a lever to see how I would translate strategy into action."/><div className="growth-grid"><div className="pillar-list">{growthPillars.map((p,i)=>{const Icon=p.icon;return <button className={activePillar===i?"active":""} onClick={()=>setActivePillar(i)} key={p.title}><span><Icon size={19}/></span><div><b>{p.title}</b><small>{p.impact}</small></div><ChevronRight size={17}/></button>})}</div><AnimatePresence mode="wait"><motion.article key={activePillar} className="pillar-detail" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-10}}>{React.createElement(growthPillars[activePillar].icon,{size:34})}<small>Lever {activePillar+1}</small><h3>{growthPillars[activePillar].title}</h3><p>{growthPillars[activePillar].text}</p><div className="outcome"><Gauge size={15}/> Commercial outcome: {growthPillars[activePillar].impact}</div></motion.article></AnimatePresence></div>
       </section>
-
-      <section id="market" className="band"><div className="shell"><SectionTitle eyebrow="India market expansion" title="Scale from metro leadership to a broader advertiser growth network." copy="An initial prioritisation hypothesis balancing enterprise expansion, emerging hubs and regional development; validate it against Uber’s portfolio data and commercial capacity."/>
-        <div className="timeline"><div className="timeline-head"><div><small>Portfolio prioritisation</small><h3>Market Expansion Timeline</h3></div><b>Core → Scale → New</b></div><div className="line"/><div className="timeline-grid">{marketPhases.map((m,i)=><div className="timeline-step" key={m.n}><span style={{background:m.colour}}>{i+1}</span><h4>{m.title.replace("Deepen ","").replace("Scale ","").replace("Unlock ","")}</h4><p>{m.cities}</p><i><b style={{width:`${m.allocation}%`,background:m.colour}}/></i><strong style={{color:m.colour}}>{m.allocation}% focus</strong></div>)}</div></div>
-        <div className="strategy-grid">{marketPhases.map(m=><article className="strategy-card" key={m.n} style={{"--accent":m.colour}}><div className="strategy-top"><span>{m.n}</span><b>{m.outcome}</b></div><h3>{m.title}</h3><small>{m.cities}</small><ul>{m.goals.map(g=><li key={g}><CheckCircle2 size={15}/>{g}</li>)}</ul><div className="allocation"><span>Recommended focus</span><strong>{m.allocation}%</strong></div></article>)}</div>
-        <div className="expected"><Route/><div><small>Planning hypothesis—not Uber forecasts</small><h3>A repeatable growth engine across enterprise expansion, category penetration and regional development.</h3></div></div>
-      </div></section>
 
       <section id="portfolio" className="shell section"><SectionTitle eyebrow="Portfolio strategy" title="Different accounts need different growth motions." copy="A disciplined portfolio model keeps effort focused while creating coverage across enterprise clients and agency partners."/><div className="tabs">{portfolioPlays.map((p,i)=><button className={activePlay===i?"active":""} onClick={()=>setActivePlay(i)} key={p.name}>{p.name}</button>)}</div><motion.article className="portfolio-panel" key={activePlay} initial={{opacity:0,x:10}} animate={{opacity:1,x:0}}><div><small>{portfolioPlays[activePlay].goal}</small><h3>{portfolioPlays[activePlay].name}</h3></div><div><p>{portfolioPlays[activePlay].text}</p><div className="metrics three">{portfolioPlays[activePlay].kpis.map(k=><Metric value={<CheckCircle2 size={18}/>} label={k} key={k}/>)}</div></div></motion.article></section>
 
